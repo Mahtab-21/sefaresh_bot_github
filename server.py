@@ -1,7 +1,7 @@
-import os
 from flask import Flask, request
 from payment import verify_payment
 from database import set_paid, get_order
+import os
 
 app = Flask(__name__)
 
@@ -11,7 +11,6 @@ def home():
 
 @app.route("/verify/<int:order_id>")
 def verify(order_id):
-
     authority = request.args.get("Authority")
     status = request.args.get("Status")
 
@@ -19,12 +18,10 @@ def verify(order_id):
         return "Payment Cancelled ❌"
 
     order = get_order(order_id)
-
     if not order:
         return "Order Not Found ❌"
 
-    amount = order[8]
-
+    amount = order[8]  # ستون قیمت
     success = verify_payment(order_id, authority, amount)
 
     if success:
@@ -34,5 +31,5 @@ def verify(order_id):
     return "Verification Failed ❌"
 
 def run():
-    port = int(os.environ.get("PORT", 10000))
+    port = int(os.environ.get("PORT", 5000))  # مهم برای Render
     app.run(host="0.0.0.0", port=port)
