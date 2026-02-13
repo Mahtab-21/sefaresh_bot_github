@@ -1,0 +1,16 @@
+products = {
+    "111": {"name": "Chanel Square Sunglasses", "price": "695 تومان", "colors": ["مشکی"]},
+    "112": {"name": "Pilot Chanel Sunglasses", "price": "430 تومان", "colors": ["مشکی"]},
+    "113": {"name": "Rectangular Chanel Sunglasses", "price": "505 تومان", "colors": ["سبز", "قرمز", "مشکی", "آبی"]},
+    "114": {"name": "Mask Sunglasses Dior", "price": "500 تومان", "colors": ["مشکی", "صورتی", "سبز"]},
+    "115": {"name": "Dior Treasure", "price": "600 تومان", "colors": ["مشکی"]},
+    "116": {"name": "Dior Petit CD", "price": "300 تومان", "colors": ["مشکی"]},
+    "117": {"name": "YSL 903 HOWL", "price": "330 تومان", "colors": ["مشکی"]},
+    "118": {"name": "YSL 901 HOWL", "price": "410 تومان", "colors": ["مشکی"]},
+    "119": {"name": "YSL Slim Black", "price": "300 تومان", "colors": ["مشکی"]},
+    "120": {"name": "YSL M161", "price": "495 تومان", "colors": ["مشکی"]},
+    "121": {"name": "YSL M94", "price": "580 تومان", "colors": ["سفید", "مشکی"]},
+    "122": {"name": "Louboutin Hot Chick 21", "price": "640 تومان", "colors": ["مشکی"]},
+    "123": {"name": "Louboutin Red Havana", "price": "710 تومان", "colors": ["مشکی"]},
+    "124": {"name": "Louboutin Dolly", "price": "875 تومان", "colors": ["مشکی"]},
+}
