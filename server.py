@@ -21,15 +21,13 @@ def verify(order_id):
     if not order:
         return "Order Not Found ❌"
 
-    amount = order[8]  # ستون قیمت
+    amount = order[8]  # price column
     success = verify_payment(order_id, authority, amount)
-
     if success:
         set_paid(order_id)
         return "Payment Success ✅"
-
     return "Verification Failed ❌"
 
 def run():
-    port = int(os.environ.get("PORT", 5000))  # مهم برای Render
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
