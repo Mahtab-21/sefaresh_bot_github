@@ -1,34 +1,16 @@
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, ConversationHandler
-from config import TOKEN
-from handlers import *
-import threading
-import server
+# main.py
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
+import os
+
+TOKEN = os.environ.get("TOKEN")  # تو Render Token رو در Environment Variables ست کن
+
+def start(update, context):
+    update.message.reply_text("سلام!")
 
 def main():
     updater = Updater(token=TOKEN, use_context=True)
     dp = updater.dispatcher
-
-    conv = ConversationHandler(
-        entry_points=[CommandHandler("start", start)],
-        states={
-            PRODUCT: [MessageHandler(Filters.text & ~Filters.command, get_product)],
-            COLOR: [CallbackQueryHandler(get_color)],
-            QTY: [MessageHandler(Filters.text & ~Filters.command, get_qty)],
-            NAME: [MessageHandler(Filters.text & ~Filters.command, get_name)],
-            PHONE: [MessageHandler(Filters.text & ~Filters.command, get_phone)],
-            ADDRESS: [MessageHandler(Filters.text & ~Filters.command, get_address)],
-            POSTAL: [MessageHandler(Filters.text & ~Filters.command, get_postal)],
-            CONFIRM: [CallbackQueryHandler(confirm)]
-        },
-        fallbacks=[]
-    )
-
-    dp.add_handler(conv)
-
-    # Run Flask server in a separate thread
-    t = threading.Thread(target=server.run)
-    t.start()
-
+    dp.add_handler(CommandHandler("start", start))
     updater.start_polling()
     updater.idle()
 
