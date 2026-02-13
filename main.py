@@ -1,7 +1,7 @@
 from telegram.ext import Updater, CommandHandler
+from config import TOKEN
 import os
 
-TOKEN = os.environ.get("BOT_TOKEN")
 
 def start(update, context):
     update.message.reply_text("ربات فعاله ✅")
@@ -14,6 +14,3 @@ def main():
 
     updater.start_polling()
     updater.idle()
-
-if __name__ == "__main__":
-    main()
