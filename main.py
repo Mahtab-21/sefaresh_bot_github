@@ -1,16 +1,17 @@
-# main.py
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
+from telegram.ext import Updater, CommandHandler
 import os
 
-TOKEN = os.environ.get("TOKEN")  # تو Render Token رو در Environment Variables ست کن
+TOKEN = os.environ.get("BOT_TOKEN")
 
 def start(update, context):
-    update.message.reply_text("سلام!")
+    update.message.reply_text("ربات فعاله ✅")
 
 def main():
-    updater = Updater(token=TOKEN, use_context=True)
+    updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
+
     dp.add_handler(CommandHandler("start", start))
+
     updater.start_polling()
     updater.idle()
 
