@@ -1,14 +1,13 @@
+import os
 from flask import Flask, request
 from payment import verify_payment
 from database import set_paid, get_order
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def home():
     return "Bot Server Running"
-
 
 @app.route("/verify/<int:order_id>")
 def verify(order_id):
@@ -24,7 +23,7 @@ def verify(order_id):
     if not order:
         return "Order Not Found ❌"
 
-    amount = order[8]  # price column
+    amount = order[8]
 
     success = verify_payment(order_id, authority, amount)
 
@@ -34,6 +33,6 @@ def verify(order_id):
 
     return "Verification Failed ❌"
 
-
 def run():
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
